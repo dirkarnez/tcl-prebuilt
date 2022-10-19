@@ -33,7 +33,7 @@ jobs:
       - name: Prepare
         run: |
           touch tclStubInit.c tclOOStubInit.c tclOOScript.h
-        working-directory: generic
+        working-directory: tcl/generic
         
       - name: set PATH, check mingw version, cmake generate, build and install
         shell: msys2 {0}
