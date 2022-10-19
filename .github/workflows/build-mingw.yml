@@ -11,10 +11,10 @@ jobs:
     name: Create Release
     runs-on: windows-2019
     env:
-      libraryName: mpdecimal
-      installationPath: mpdecimal-installation
+      libraryName: tcl
+      installationPath: tcl-installation
       tagName: core-8-6-12
-      mingwTargetZip: mpdecimal-${{ github.ref_name }}-x86_64-posix-seh-rev0-8.1.0.zip
+      mingwTargetZip: tcl-${{ github.ref_name }}-x86_64-posix-seh-rev0-8.1.0.zip
     steps:
       - name: git clone
         shell: cmd
@@ -30,7 +30,7 @@ jobs:
         shell: cmd
         run:  cd /d ${{ github.workspace }} && curl https://github.com/2641797006/c/blob/master/GCC-zip/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z?raw=true -L --output x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z && dir && 7z.exe x x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z
      
-     - name: Prepare
+      - name: Prepare
         run: |
           touch tclStubInit.c tclOOStubInit.c tclOOScript.h
         working-directory: generic
