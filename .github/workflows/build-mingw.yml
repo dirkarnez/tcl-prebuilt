@@ -42,7 +42,7 @@ jobs:
             export PATH="$workspace/mingw64:$workspace/mingw64/bin:$workspace/msys64/usr/bin:/usr/bin" &&
             export CFLAGS=-DTCL_UTF_MAX=3 &&
             export CFLAGS=-DTCL_NO_DEPRECATED=1 &&
-            cd tcl && 
+            cd tcl/win && 
             g++ --version && 
             ./configure --help &&
             ./configure --enable-64bit --disable-shared --prefix="$(pwd)/${{ env.installationPath }}" &&
@@ -52,12 +52,12 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          directory: "tcl/${{ env.installationPath }}"
+          directory: "tcl/win/${{ env.installationPath }}"
           filename: "${{ env.mingwTargetZip }}"
        
       - name: Release prebuilt
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "tcl/${{ env.installationPath }}/${{ env.mingwTargetZip }}"
+          artifacts: "tcl/win/${{ env.installationPath }}/${{ env.mingwTargetZip }}"
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
